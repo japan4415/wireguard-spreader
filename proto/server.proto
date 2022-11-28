@@ -1,14 +1,58 @@
 syntax = "proto3";
-package server;
+package wireguard_spreader;
 
-service Greeter {
+service Server {
     rpc SayHello (HelloRequest) returns (HelloReply);
+    rpc Submit (SubmitRequest) returns (SubmitReply);
+    rpc Update (UpdateRequest) returns (UpdateRequest);
+    rpc Spread (SpreadRequest) returns (SpreadReply);
+    rpc Delete (DeleteRequest) returns (DeleteReply);
+}
+
+service Client {
+    rpc UpdateAll (UpdateAllRequest) returns (UpdateAllReply);
 }
 
 message HelloRequest {
    string name = 1;
 }
-
 message HelloReply {
     string message = 1;
+}
+
+message SubmitRequest {
+    string host = 1;
+    int32 port = 2;
+
+}
+message SubmitReply {
+    string result = 1;
+}
+
+message UpdateRequest {
+    string config = 1;
+}
+message UpdateReply {
+    string result = 1;
+}
+
+message SpreadRequest {
+
+}
+message SpreadReply {
+    string result = 1;
+}
+
+message DeleteRequest {
+
+}
+message DeleteReply {
+    string result = 1;
+}
+
+message UpdateAllRequest {
+
+}
+message UpdateAllReply {
+    string result = 1;
 }
